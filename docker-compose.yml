@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: barcodescanner-backend
+    environment:
+      - MYSQL_HOST=${MYSQL_HOST}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+    expose:
+      - "5000"
+    volumes:
+      - ./backend:/app
+    restart: unless-stopped
+    networks:
+      - app-network
+      - mysql
+      - proxy
+  frontend:
+    build: ./frontend
+    container_name: barcodescanner-frontend
+    environment:
+      - REACT_APP_API_URL=${REACT_APP_API_URL}
+    expose:
+      - "80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - app-network
+      - mysql
+      - proxy
+
+networks:
+  app-network:
+    driver: bridge
+  mysql:
+    external: true
+  proxy:
+    external: true
