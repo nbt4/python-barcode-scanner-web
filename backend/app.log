@@ -1,0 +1,651 @@
+2025-06-01 23:32:43,378 [INFO] Starting Flask application...
+2025-06-01 23:32:43,621 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.11.96:5000
+2025-06-01 23:32:43,622 [INFO] [33mPress CTRL+C to quit[0m
+2025-06-01 23:32:43,623 [INFO]  * Restarting with stat
+2025-06-01 23:32:44,129 [INFO] Starting Flask application...
+2025-06-01 23:32:44,170 [WARNING]  * Debugger is active!
+2025-06-01 23:32:44,175 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:33:16,195 [INFO] 127.0.0.1 - - [01/Jun/2025 23:33:16] "GET /health HTTP/1.1" 200 -
+2025-06-01 23:33:16,202 [INFO] 127.0.0.1 - - [01/Jun/2025 23:33:16] "[33mPOST /api/v1/auth/login HTTP/1.1[0m" 404 -
+2025-06-01 23:33:16,213 [INFO] 127.0.0.1 - - [01/Jun/2025 23:33:16] "[33mGET /api/v1/jobs HTTP/1.1[0m" 404 -
+2025-06-01 23:33:56,844 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\auth.py', reloading
+2025-06-01 23:33:56,920 [INFO]  * Restarting with stat
+2025-06-01 23:33:57,385 [INFO] Starting Flask application...
+2025-06-01 23:33:57,409 [WARNING]  * Debugger is active!
+2025-06-01 23:33:57,412 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:34:23,804 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\__init__.py', reloading
+2025-06-01 23:34:23,873 [INFO]  * Restarting with stat
+2025-06-01 23:34:24,346 [INFO] Starting Flask application...
+2025-06-01 23:34:24,372 [WARNING]  * Debugger is active!
+2025-06-01 23:34:24,375 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:35:05,781 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\test_api.py', reloading
+2025-06-01 23:35:05,847 [INFO]  * Restarting with stat
+2025-06-01 23:35:06,283 [INFO] Starting Flask application...
+2025-06-01 23:35:06,307 [WARNING]  * Debugger is active!
+2025-06-01 23:35:06,311 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:35:13,753 [INFO] 127.0.0.1 - - [01/Jun/2025 23:35:13] "GET /health HTTP/1.1" 200 -
+2025-06-01 23:35:13,766 [INFO] 127.0.0.1 - - [01/Jun/2025 23:35:13] "POST /api/v1/auth/login HTTP/1.1" 200 -
+2025-06-01 23:35:13,771 [INFO] 127.0.0.1 - - [01/Jun/2025 23:35:13] "GET /api/v1/auth/verify HTTP/1.1" 200 -
+2025-06-01 23:35:13,777 [INFO] 127.0.0.1 - - [01/Jun/2025 23:35:13] "[31m[1mPOST /api/v1/auth/login HTTP/1.1[0m" 401 -
+2025-06-01 23:36:03,834 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:36:03,918 [INFO]  * Restarting with stat
+2025-06-01 23:36:04,615 [INFO] Starting Flask application...
+2025-06-01 23:36:04,647 [WARNING]  * Debugger is active!
+2025-06-01 23:36:04,651 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:36:36,035 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\__init__.py', reloading
+2025-06-01 23:36:36,185 [INFO]  * Restarting with stat
+2025-06-01 23:37:28,614 [INFO] Starting Flask application...
+2025-06-01 23:37:28,661 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.11.96:5000
+2025-06-01 23:37:28,661 [INFO] [33mPress CTRL+C to quit[0m
+2025-06-01 23:37:28,663 [INFO]  * Restarting with stat
+2025-06-01 23:37:29,173 [INFO] Starting Flask application...
+2025-06-01 23:37:29,189 [WARNING]  * Debugger is active!
+2025-06-01 23:37:29,191 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:37:50,512 [INFO] 127.0.0.1 - - [01/Jun/2025 23:37:50] "GET /health HTTP/1.1" 200 -
+2025-06-01 23:37:50,518 [INFO] 127.0.0.1 - - [01/Jun/2025 23:37:50] "POST /api/v1/auth/login HTTP/1.1" 200 -
+2025-06-01 23:37:50,525 [INFO] 127.0.0.1 - - [01/Jun/2025 23:37:50] "GET /api/v1/auth/verify HTTP/1.1" 200 -
+2025-06-01 23:37:50,869 [INFO] 127.0.0.1 - - [01/Jun/2025 23:37:50] "[35m[1mGET /api/v1/jobs/ HTTP/1.1[0m" 500 -
+2025-06-01 23:37:51,095 [INFO] 127.0.0.1 - - [01/Jun/2025 23:37:51] "[35m[1mPOST /api/v1/jobs/ HTTP/1.1[0m" 500 -
+2025-06-01 23:38:05,366 [INFO] Starting Flask application...
+2025-06-01 23:38:05,398 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.11.96:5000
+2025-06-01 23:38:05,399 [INFO] [33mPress CTRL+C to quit[0m
+2025-06-01 23:38:05,400 [INFO]  * Restarting with stat
+2025-06-01 23:38:06,138 [INFO] Starting Flask application...
+2025-06-01 23:38:06,157 [WARNING]  * Debugger is active!
+2025-06-01 23:38:06,159 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:38:27,268 [INFO] 127.0.0.1 - - [01/Jun/2025 23:38:27] "GET /health HTTP/1.1" 200 -
+2025-06-01 23:38:27,273 [INFO] 127.0.0.1 - - [01/Jun/2025 23:38:27] "POST /api/v1/auth/login HTTP/1.1" 200 -
+2025-06-01 23:38:27,279 [INFO] 127.0.0.1 - - [01/Jun/2025 23:38:27] "GET /api/v1/auth/verify HTTP/1.1" 200 -
+2025-06-01 23:38:27,395 [INFO] 127.0.0.1 - - [01/Jun/2025 23:38:27] "[35m[1mGET /api/v1/jobs/ HTTP/1.1[0m" 500 -
+2025-06-01 23:38:27,503 [INFO] 127.0.0.1 - - [01/Jun/2025 23:38:27] "[35m[1mPOST /api/v1/jobs/ HTTP/1.1[0m" 500 -
+2025-06-01 23:38:59,496 [INFO] Starting Flask application...
+2025-06-01 23:38:59,528 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.11.96:5000
+2025-06-01 23:38:59,528 [INFO] [33mPress CTRL+C to quit[0m
+2025-06-01 23:38:59,531 [INFO]  * Restarting with stat
+2025-06-01 23:39:00,211 [INFO] Starting Flask application...
+2025-06-01 23:39:00,244 [WARNING]  * Debugger is active!
+2025-06-01 23:39:00,249 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:39:23,153 [INFO] 127.0.0.1 - - [01/Jun/2025 23:39:23] "GET /health HTTP/1.1" 200 -
+2025-06-01 23:39:23,159 [INFO] 127.0.0.1 - - [01/Jun/2025 23:39:23] "POST /api/v1/auth/login HTTP/1.1" 200 -
+2025-06-01 23:39:23,166 [INFO] 127.0.0.1 - - [01/Jun/2025 23:39:23] "GET /api/v1/auth/verify HTTP/1.1" 200 -
+2025-06-01 23:39:23,288 [INFO] 127.0.0.1 - - [01/Jun/2025 23:39:23] "[35m[1mGET /api/v1/jobs/ HTTP/1.1[0m" 500 -
+2025-06-01 23:39:23,395 [INFO] 127.0.0.1 - - [01/Jun/2025 23:39:23] "[35m[1mPOST /api/v1/jobs/ HTTP/1.1[0m" 500 -
+2025-06-01 23:40:06,359 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:40:06,441 [INFO]  * Restarting with stat
+2025-06-01 23:40:06,730 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:40:06,823 [INFO]  * Restarting with stat
+2025-06-01 23:40:06,989 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:40:07,017 [INFO] Starting Flask application...
+2025-06-01 23:40:07,042 [WARNING]  * Debugger is active!
+2025-06-01 23:40:07,045 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:40:07,087 [INFO]  * Restarting with stat
+2025-06-01 23:40:07,334 [INFO] Starting Flask application...
+2025-06-01 23:40:07,351 [WARNING]  * Debugger is active!
+2025-06-01 23:40:07,354 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:40:07,523 [INFO] Starting Flask application...
+2025-06-01 23:40:07,541 [WARNING]  * Debugger is active!
+2025-06-01 23:40:07,544 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:40:37,387 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:40:37,473 [INFO]  * Restarting with stat
+2025-06-01 23:40:37,682 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:40:37,766 [INFO]  * Restarting with stat
+2025-06-01 23:40:37,865 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:40:37,955 [INFO]  * Restarting with stat
+2025-06-01 23:40:38,058 [INFO] Starting Flask application...
+2025-06-01 23:40:38,082 [WARNING]  * Debugger is active!
+2025-06-01 23:40:38,085 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:40:38,288 [INFO] Starting Flask application...
+2025-06-01 23:40:38,309 [WARNING]  * Debugger is active!
+2025-06-01 23:40:38,312 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:40:38,454 [INFO] Starting Flask application...
+2025-06-01 23:40:38,475 [WARNING]  * Debugger is active!
+2025-06-01 23:40:38,479 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:41:12,721 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\test_api.py', reloading
+2025-06-01 23:41:12,805 [INFO]  * Restarting with stat
+2025-06-01 23:41:12,873 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\test_api.py', reloading
+2025-06-01 23:41:12,973 [INFO]  * Restarting with stat
+2025-06-01 23:41:13,326 [INFO] Starting Flask application...
+2025-06-01 23:41:13,346 [WARNING]  * Debugger is active!
+2025-06-01 23:41:13,349 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:41:13,444 [INFO] Starting Flask application...
+2025-06-01 23:41:13,462 [WARNING]  * Debugger is active!
+2025-06-01 23:41:13,465 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:41:13,467 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\test_api.py', reloading
+2025-06-01 23:41:13,534 [INFO]  * Restarting with stat
+2025-06-01 23:41:13,989 [INFO] Starting Flask application...
+2025-06-01 23:41:14,008 [WARNING]  * Debugger is active!
+2025-06-01 23:41:14,011 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:41:55,788 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\test_api.py', reloading
+2025-06-01 23:41:55,867 [INFO]  * Restarting with stat
+2025-06-01 23:41:55,994 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\test_api.py', reloading
+2025-06-01 23:41:56,100 [INFO]  * Restarting with stat
+2025-06-01 23:41:56,434 [INFO] Starting Flask application...
+2025-06-01 23:41:56,454 [WARNING]  * Debugger is active!
+2025-06-01 23:41:56,456 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:41:56,468 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\test_api.py', reloading
+2025-06-01 23:41:56,545 [INFO]  * Restarting with stat
+2025-06-01 23:41:56,573 [INFO] Starting Flask application...
+2025-06-01 23:41:56,594 [WARNING]  * Debugger is active!
+2025-06-01 23:41:56,597 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:41:57,001 [INFO] Starting Flask application...
+2025-06-01 23:41:57,020 [WARNING]  * Debugger is active!
+2025-06-01 23:41:57,023 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:42:17,376 [INFO] 127.0.0.1 - - [01/Jun/2025 23:42:17] "GET /health HTTP/1.1" 200 -
+2025-06-01 23:42:17,382 [INFO] 127.0.0.1 - - [01/Jun/2025 23:42:17] "POST /api/v1/auth/login HTTP/1.1" 200 -
+2025-06-01 23:42:17,389 [INFO] 127.0.0.1 - - [01/Jun/2025 23:42:17] "GET /api/v1/auth/verify HTTP/1.1" 200 -
+2025-06-01 23:42:17,576 [INFO] 127.0.0.1 - - [01/Jun/2025 23:42:17] "[35m[1mGET /api/v1/jobs/ HTTP/1.1[0m" 500 -
+2025-06-01 23:42:17,696 [INFO] 127.0.0.1 - - [01/Jun/2025 23:42:17] "[35m[1mPOST /api/v1/jobs/ HTTP/1.1[0m" 500 -
+2025-06-01 23:42:53,962 [INFO] Starting Flask application...
+2025-06-01 23:42:53,996 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.11.96:5000
+2025-06-01 23:42:53,996 [INFO] [33mPress CTRL+C to quit[0m
+2025-06-01 23:42:53,998 [INFO]  * Restarting with stat
+2025-06-01 23:42:54,729 [INFO] Starting Flask application...
+2025-06-01 23:42:54,748 [WARNING]  * Debugger is active!
+2025-06-01 23:42:54,753 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:43:17,171 [INFO] 127.0.0.1 - - [01/Jun/2025 23:43:17] "GET /health HTTP/1.1" 200 -
+2025-06-01 23:43:17,177 [INFO] 127.0.0.1 - - [01/Jun/2025 23:43:17] "POST /api/v1/auth/login HTTP/1.1" 200 -
+2025-06-01 23:43:17,183 [INFO] 127.0.0.1 - - [01/Jun/2025 23:43:17] "GET /api/v1/auth/verify HTTP/1.1" 200 -
+2025-06-01 23:43:17,484 [INFO] 127.0.0.1 - - [01/Jun/2025 23:43:17] "[35m[1mGET /api/v1/jobs/ HTTP/1.1[0m" 500 -
+2025-06-01 23:43:17,753 [INFO] 127.0.0.1 - - [01/Jun/2025 23:43:17] "[35m[1mPOST /api/v1/jobs/ HTTP/1.1[0m" 500 -
+2025-06-01 23:43:37,193 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\config.py', reloading
+2025-06-01 23:43:37,228 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\config.py', reloading
+2025-06-01 23:43:37,274 [INFO]  * Restarting with stat
+2025-06-01 23:43:37,318 [INFO]  * Restarting with stat
+2025-06-01 23:43:37,683 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\config.py', reloading
+2025-06-01 23:43:37,684 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\config.py', reloading
+2025-06-01 23:43:37,787 [INFO]  * Restarting with stat
+2025-06-01 23:43:37,791 [INFO]  * Restarting with stat
+2025-06-01 23:43:37,821 [INFO] Starting Flask application...
+2025-06-01 23:43:37,848 [WARNING]  * Debugger is active!
+2025-06-01 23:43:37,852 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:43:37,859 [INFO] Starting Flask application...
+2025-06-01 23:43:37,884 [WARNING]  * Debugger is active!
+2025-06-01 23:43:37,887 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:43:38,277 [INFO] Starting Flask application...
+2025-06-01 23:43:38,297 [WARNING]  * Debugger is active!
+2025-06-01 23:43:38,297 [WARNING]  * Debugger is active!
+2025-06-01 23:43:38,300 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:44:06,287 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:44:06,289 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:44:06,446 [INFO]  * Restarting with stat
+2025-06-01 23:44:06,457 [INFO]  * Restarting with stat
+2025-06-01 23:44:06,680 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:44:06,680 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:44:06,786 [INFO]  * Restarting with stat
+2025-06-01 23:44:07,071 [INFO] Starting Flask application...
+2025-06-01 23:44:07,096 [WARNING]  * Debugger is active!
+2025-06-01 23:44:07,097 [WARNING]  * Debugger is active!
+2025-06-01 23:44:07,100 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:44:07,100 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:44:07,329 [INFO] Starting Flask application...
+2025-06-01 23:44:07,332 [INFO] Starting Flask application...
+2025-06-01 23:44:07,349 [WARNING]  * Debugger is active!
+2025-06-01 23:44:07,351 [WARNING]  * Debugger is active!
+2025-06-01 23:44:07,351 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:44:07,354 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:44:30,420 [INFO] 127.0.0.1 - - [01/Jun/2025 23:44:30] "GET /health HTTP/1.1" 200 -
+2025-06-01 23:44:30,426 [INFO] 127.0.0.1 - - [01/Jun/2025 23:44:30] "POST /api/v1/auth/login HTTP/1.1" 200 -
+2025-06-01 23:44:30,432 [INFO] 127.0.0.1 - - [01/Jun/2025 23:44:30] "GET /api/v1/auth/verify HTTP/1.1" 200 -
+2025-06-01 23:44:30,748 [INFO] 127.0.0.1 - - [01/Jun/2025 23:44:30] "[35m[1mGET /api/v1/jobs/ HTTP/1.1[0m" 500 -
+2025-06-01 23:44:30,852 [INFO] 127.0.0.1 - - [01/Jun/2025 23:44:30] "[35m[1mPOST /api/v1/jobs/ HTTP/1.1[0m" 500 -
+2025-06-01 23:44:56,854 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\__init__.py', reloading
+2025-06-01 23:44:56,866 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\__init__.py', reloading
+2025-06-01 23:44:56,975 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\__init__.py', reloading
+2025-06-01 23:44:56,980 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\__init__.py', reloading
+2025-06-01 23:44:56,998 [INFO]  * Restarting with stat
+2025-06-01 23:44:57,000 [INFO]  * Restarting with stat
+2025-06-01 23:44:57,111 [INFO]  * Restarting with stat
+2025-06-01 23:44:57,113 [INFO]  * Restarting with stat
+2025-06-01 23:44:57,786 [INFO] Starting Flask application...
+2025-06-01 23:44:57,789 [INFO] Starting Flask application...
+2025-06-01 23:44:57,796 [INFO] Starting Flask application...
+2025-06-01 23:44:57,806 [INFO] Starting Flask application...
+2025-06-01 23:44:57,810 [WARNING]  * Debugger is active!
+2025-06-01 23:44:57,815 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:44:57,815 [WARNING]  * Debugger is active!
+2025-06-01 23:44:57,820 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:44:57,822 [WARNING]  * Debugger is active!
+2025-06-01 23:44:57,826 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:44:57,833 [WARNING]  * Debugger is active!
+2025-06-01 23:44:57,837 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:45:04,126 [INFO] Starting Flask application...
+2025-06-01 23:45:04,160 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.11.96:5000
+2025-06-01 23:45:04,161 [INFO] [33mPress CTRL+C to quit[0m
+2025-06-01 23:45:04,163 [INFO]  * Restarting with stat
+2025-06-01 23:45:04,828 [INFO] Starting Flask application...
+2025-06-01 23:45:04,848 [WARNING]  * Debugger is active!
+2025-06-01 23:45:04,850 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:45:29,328 [INFO] 127.0.0.1 - - [01/Jun/2025 23:45:29] "GET /health HTTP/1.1" 200 -
+2025-06-01 23:45:29,343 [INFO] 127.0.0.1 - - [01/Jun/2025 23:45:29] "POST /api/v1/auth/login HTTP/1.1" 200 -
+2025-06-01 23:45:29,359 [INFO] 127.0.0.1 - - [01/Jun/2025 23:45:29] "GET /api/v1/auth/verify HTTP/1.1" 200 -
+2025-06-01 23:45:29,593 [INFO] 127.0.0.1 - - [01/Jun/2025 23:45:29] "[35m[1mGET /api/v1/jobs/ HTTP/1.1[0m" 500 -
+2025-06-01 23:45:29,708 [INFO] 127.0.0.1 - - [01/Jun/2025 23:45:29] "[35m[1mPOST /api/v1/jobs/ HTTP/1.1[0m" 500 -
+2025-06-01 23:45:42,406 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\__init__.py', reloading
+2025-06-01 23:45:42,419 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\__init__.py', reloading
+2025-06-01 23:45:42,423 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\__init__.py', reloading
+2025-06-01 23:45:42,430 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\__init__.py', reloading
+2025-06-01 23:45:42,442 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\__init__.py', reloading
+2025-06-01 23:45:42,565 [INFO]  * Restarting with stat
+2025-06-01 23:45:42,594 [INFO]  * Restarting with stat
+2025-06-01 23:45:42,596 [INFO]  * Restarting with stat
+2025-06-01 23:45:42,607 [INFO]  * Restarting with stat
+2025-06-01 23:45:42,609 [INFO]  * Restarting with stat
+2025-06-01 23:45:43,393 [INFO] Starting Flask application...
+2025-06-01 23:45:43,396 [INFO] Starting Flask application...
+2025-06-01 23:45:43,421 [INFO] Starting Flask application...
+2025-06-01 23:45:43,429 [INFO] Starting Flask application...
+2025-06-01 23:45:43,432 [WARNING]  * Debugger is active!
+2025-06-01 23:45:43,434 [WARNING]  * Debugger is active!
+2025-06-01 23:45:43,440 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:45:43,440 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:45:43,457 [INFO] Starting Flask application...
+2025-06-01 23:45:43,460 [WARNING]  * Debugger is active!
+2025-06-01 23:45:43,461 [WARNING]  * Debugger is active!
+2025-06-01 23:45:43,464 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:45:43,465 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:45:43,486 [WARNING]  * Debugger is active!
+2025-06-01 23:45:43,489 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:46:05,837 [INFO] 127.0.0.1 - - [01/Jun/2025 23:46:05] "GET /health HTTP/1.1" 200 -
+2025-06-01 23:46:05,844 [INFO] 127.0.0.1 - - [01/Jun/2025 23:46:05] "POST /api/v1/auth/login HTTP/1.1" 200 -
+2025-06-01 23:46:05,850 [INFO] 127.0.0.1 - - [01/Jun/2025 23:46:05] "GET /api/v1/auth/verify HTTP/1.1" 200 -
+2025-06-01 23:46:06,083 [INFO] 127.0.0.1 - - [01/Jun/2025 23:46:06] "[35m[1mGET /api/v1/jobs/ HTTP/1.1[0m" 500 -
+2025-06-01 23:46:06,190 [INFO] 127.0.0.1 - - [01/Jun/2025 23:46:06] "[35m[1mPOST /api/v1/jobs/ HTTP/1.1[0m" 500 -
+2025-06-01 23:46:19,081 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:46:19,081 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:46:19,082 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:46:19,085 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:46:19,287 [INFO]  * Restarting with stat
+2025-06-01 23:46:19,287 [INFO]  * Restarting with stat
+2025-06-01 23:46:19,288 [INFO]  * Restarting with stat
+2025-06-01 23:46:19,308 [INFO]  * Restarting with stat
+2025-06-01 23:46:19,320 [INFO]  * Restarting with stat
+2025-06-01 23:46:20,250 [INFO] Starting Flask application...
+2025-06-01 23:46:20,250 [INFO] Starting Flask application...
+2025-06-01 23:46:20,252 [INFO] Starting Flask application...
+2025-06-01 23:46:20,270 [INFO] Starting Flask application...
+2025-06-01 23:46:20,278 [WARNING]  * Debugger is active!
+2025-06-01 23:46:20,278 [WARNING]  * Debugger is active!
+2025-06-01 23:46:20,280 [WARNING]  * Debugger is active!
+2025-06-01 23:46:20,282 [INFO] Starting Flask application...
+2025-06-01 23:46:20,283 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:46:20,284 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:46:20,284 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:46:20,298 [WARNING]  * Debugger is active!
+2025-06-01 23:46:20,302 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:46:20,309 [WARNING]  * Debugger is active!
+2025-06-01 23:46:20,317 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:46:26,160 [INFO] 127.0.0.1 - - [01/Jun/2025 23:46:26] "GET /health HTTP/1.1" 200 -
+2025-06-01 23:46:26,168 [INFO] 127.0.0.1 - - [01/Jun/2025 23:46:26] "POST /api/v1/auth/login HTTP/1.1" 200 -
+2025-06-01 23:46:26,172 [INFO] 127.0.0.1 - - [01/Jun/2025 23:46:26] "GET /api/v1/auth/verify HTTP/1.1" 200 -
+2025-06-01 23:46:26,405 [INFO] 127.0.0.1 - - [01/Jun/2025 23:46:26] "[35m[1mGET /api/v1/jobs/ HTTP/1.1[0m" 500 -
+2025-06-01 23:46:26,522 [INFO] 127.0.0.1 - - [01/Jun/2025 23:46:26] "[35m[1mPOST /api/v1/jobs/ HTTP/1.1[0m" 500 -
+2025-06-01 23:46:46,681 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\config.py', reloading
+2025-06-01 23:46:46,682 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\config.py', reloading
+2025-06-01 23:46:46,684 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\config.py', reloading
+2025-06-01 23:46:46,684 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\config.py', reloading
+2025-06-01 23:46:46,849 [INFO]  * Restarting with stat
+2025-06-01 23:46:46,849 [INFO]  * Restarting with stat
+2025-06-01 23:46:46,849 [INFO]  * Restarting with stat
+2025-06-01 23:46:46,849 [INFO]  * Restarting with stat
+2025-06-01 23:46:46,859 [INFO]  * Restarting with stat
+2025-06-01 23:46:47,581 [INFO] Starting Flask application...
+2025-06-01 23:46:47,581 [INFO] Starting Flask application...
+2025-06-01 23:46:47,583 [INFO] Starting Flask application...
+2025-06-01 23:46:47,604 [INFO] Starting Flask application...
+2025-06-01 23:46:47,607 [WARNING]  * Debugger is active!
+2025-06-01 23:46:47,607 [WARNING]  * Debugger is active!
+2025-06-01 23:46:47,608 [WARNING]  * Debugger is active!
+2025-06-01 23:46:47,609 [WARNING]  * Debugger is active!
+2025-06-01 23:46:47,611 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:46:47,611 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:46:47,612 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:46:47,612 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:46:47,628 [WARNING]  * Debugger is active!
+2025-06-01 23:46:47,632 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:46:52,067 [INFO] Starting Flask application...
+2025-06-01 23:46:52,107 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.11.96:5000
+2025-06-01 23:46:52,107 [INFO] [33mPress CTRL+C to quit[0m
+2025-06-01 23:46:52,109 [INFO]  * Restarting with stat
+2025-06-01 23:46:52,613 [INFO] Starting Flask application...
+2025-06-01 23:46:52,633 [WARNING]  * Debugger is active!
+2025-06-01 23:46:52,635 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:47:15,529 [INFO] 127.0.0.1 - - [01/Jun/2025 23:47:15] "GET /health HTTP/1.1" 200 -
+2025-06-01 23:47:15,535 [INFO] 127.0.0.1 - - [01/Jun/2025 23:47:15] "POST /api/v1/auth/login HTTP/1.1" 200 -
+2025-06-01 23:47:15,540 [INFO] 127.0.0.1 - - [01/Jun/2025 23:47:15] "GET /api/v1/auth/verify HTTP/1.1" 200 -
+2025-06-01 23:47:15,752 [INFO] 127.0.0.1 - - [01/Jun/2025 23:47:15] "[35m[1mGET /api/v1/jobs/ HTTP/1.1[0m" 500 -
+2025-06-01 23:47:15,881 [INFO] 127.0.0.1 - - [01/Jun/2025 23:47:15] "[35m[1mPOST /api/v1/jobs/ HTTP/1.1[0m" 500 -
+2025-06-01 23:47:39,193 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\__init__.py', reloading
+2025-06-01 23:47:39,346 [INFO]  * Restarting with stat
+2025-06-01 23:47:39,355 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\__init__.py', reloading
+2025-06-01 23:47:39,355 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\__init__.py', reloading
+2025-06-01 23:47:39,356 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\__init__.py', reloading
+2025-06-01 23:47:39,358 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\__init__.py', reloading
+2025-06-01 23:47:39,358 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\__init__.py', reloading
+2025-06-01 23:47:39,539 [INFO]  * Restarting with stat
+2025-06-01 23:47:39,541 [INFO]  * Restarting with stat
+2025-06-01 23:47:39,548 [INFO]  * Restarting with stat
+2025-06-01 23:47:39,559 [INFO]  * Restarting with stat
+2025-06-01 23:47:39,562 [INFO]  * Restarting with stat
+2025-06-01 23:47:40,458 [INFO] Starting Flask application...
+2025-06-01 23:47:40,482 [INFO] Starting Flask application...
+2025-06-01 23:47:40,487 [WARNING]  * Debugger is active!
+2025-06-01 23:47:40,491 [INFO] Starting Flask application...
+2025-06-01 23:47:40,494 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:47:40,512 [WARNING]  * Debugger is active!
+2025-06-01 23:47:40,516 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:47:40,520 [WARNING]  * Debugger is active!
+2025-06-01 23:47:40,523 [INFO] Starting Flask application...
+2025-06-01 23:47:40,525 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:47:40,552 [WARNING]  * Debugger is active!
+2025-06-01 23:47:40,557 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:47:40,557 [INFO] Starting Flask application...
+2025-06-01 23:47:40,574 [INFO] Starting Flask application...
+2025-06-01 23:47:40,580 [WARNING]  * Debugger is active!
+2025-06-01 23:47:40,583 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:47:40,595 [WARNING]  * Debugger is active!
+2025-06-01 23:47:40,599 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:47:50,196 [INFO] Starting Flask application...
+2025-06-01 23:47:50,230 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.11.96:5000
+2025-06-01 23:47:50,230 [INFO] [33mPress CTRL+C to quit[0m
+2025-06-01 23:47:50,232 [INFO]  * Restarting with stat
+2025-06-01 23:47:51,092 [INFO] Starting Flask application...
+2025-06-01 23:47:51,169 [WARNING]  * Debugger is active!
+2025-06-01 23:47:51,173 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:48:09,451 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:48:09,551 [INFO]  * Restarting with stat
+2025-06-01 23:48:09,874 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:48:09,877 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:48:09,883 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:48:09,887 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:48:09,888 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:48:09,920 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:48:10,075 [INFO]  * Restarting with stat
+2025-06-01 23:48:10,075 [INFO]  * Restarting with stat
+2025-06-01 23:48:10,089 [INFO]  * Restarting with stat
+2025-06-01 23:48:10,101 [INFO]  * Restarting with stat
+2025-06-01 23:48:10,108 [INFO]  * Restarting with stat
+2025-06-01 23:48:10,122 [INFO]  * Restarting with stat
+2025-06-01 23:48:10,685 [INFO] Starting Flask application...
+2025-06-01 23:48:10,738 [WARNING]  * Debugger is active!
+2025-06-01 23:48:10,743 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:48:10,981 [INFO] Starting Flask application...
+2025-06-01 23:48:11,020 [WARNING]  * Debugger is active!
+2025-06-01 23:48:11,024 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:48:11,044 [INFO] Starting Flask application...
+2025-06-01 23:48:11,052 [INFO] Starting Flask application...
+2025-06-01 23:48:11,066 [INFO] Starting Flask application...
+2025-06-01 23:48:11,076 [INFO] Starting Flask application...
+2025-06-01 23:48:11,088 [WARNING]  * Debugger is active!
+2025-06-01 23:48:11,089 [WARNING]  * Debugger is active!
+2025-06-01 23:48:11,093 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:48:11,101 [WARNING]  * Debugger is active!
+2025-06-01 23:48:11,105 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:48:11,109 [WARNING]  * Debugger is active!
+2025-06-01 23:48:11,116 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:48:11,125 [INFO] Starting Flask application...
+2025-06-01 23:48:11,148 [WARNING]  * Debugger is active!
+2025-06-01 23:48:11,150 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:48:35,009 [INFO] 127.0.0.1 - - [01/Jun/2025 23:48:35] "GET /health HTTP/1.1" 200 -
+2025-06-01 23:48:35,014 [INFO] 127.0.0.1 - - [01/Jun/2025 23:48:35] "POST /api/v1/auth/login HTTP/1.1" 200 -
+2025-06-01 23:48:35,021 [INFO] 127.0.0.1 - - [01/Jun/2025 23:48:35] "GET /api/v1/auth/verify HTTP/1.1" 200 -
+2025-06-01 23:48:35,212 [INFO] 127.0.0.1 - - [01/Jun/2025 23:48:35] "[35m[1mGET /api/v1/jobs/ HTTP/1.1[0m" 500 -
+2025-06-01 23:48:35,318 [INFO] 127.0.0.1 - - [01/Jun/2025 23:48:35] "[35m[1mPOST /api/v1/jobs/ HTTP/1.1[0m" 500 -
+2025-06-01 23:48:49,313 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:48:49,393 [INFO]  * Restarting with stat
+2025-06-01 23:48:49,549 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:48:49,636 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:48:49,642 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:48:49,644 [INFO]  * Restarting with stat
+2025-06-01 23:48:49,648 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:48:49,649 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:48:49,650 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:48:49,819 [INFO]  * Restarting with stat
+2025-06-01 23:48:49,833 [INFO]  * Restarting with stat
+2025-06-01 23:48:49,837 [INFO]  * Restarting with stat
+2025-06-01 23:48:49,846 [INFO]  * Restarting with stat
+2025-06-01 23:48:49,849 [INFO]  * Restarting with stat
+2025-06-01 23:48:50,416 [INFO] Starting Flask application...
+2025-06-01 23:48:50,474 [WARNING]  * Debugger is active!
+2025-06-01 23:48:50,480 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:48:50,701 [INFO] Starting Flask application...
+2025-06-01 23:48:50,739 [WARNING]  * Debugger is active!
+2025-06-01 23:48:50,742 [INFO] Starting Flask application...
+2025-06-01 23:48:50,746 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:48:50,769 [WARNING]  * Debugger is active!
+2025-06-01 23:48:50,771 [INFO] Starting Flask application...
+2025-06-01 23:48:50,777 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:48:50,801 [WARNING]  * Debugger is active!
+2025-06-01 23:48:50,805 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:48:50,835 [INFO] Starting Flask application...
+2025-06-01 23:48:50,838 [INFO] Starting Flask application...
+2025-06-01 23:48:50,855 [INFO] Starting Flask application...
+2025-06-01 23:48:50,860 [WARNING]  * Debugger is active!
+2025-06-01 23:48:50,864 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:48:50,865 [WARNING]  * Debugger is active!
+2025-06-01 23:48:50,868 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:48:50,881 [WARNING]  * Debugger is active!
+2025-06-01 23:48:50,884 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:50:40,158 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\check_env.py', reloading
+2025-06-01 23:50:40,162 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\check_env.py', reloading
+2025-06-01 23:50:40,167 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\check_env.py', reloading
+2025-06-01 23:50:40,168 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\check_env.py', reloading
+2025-06-01 23:50:40,169 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\check_env.py', reloading
+2025-06-01 23:50:40,178 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\check_env.py', reloading
+2025-06-01 23:50:40,345 [INFO]  * Restarting with stat
+2025-06-01 23:50:40,364 [INFO]  * Restarting with stat
+2025-06-01 23:50:40,366 [INFO]  * Restarting with stat
+2025-06-01 23:50:40,370 [INFO]  * Restarting with stat
+2025-06-01 23:50:40,402 [INFO]  * Restarting with stat
+2025-06-01 23:50:40,403 [INFO]  * Restarting with stat
+2025-06-01 23:50:40,745 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\check_env.py', reloading
+2025-06-01 23:50:40,902 [INFO]  * Restarting with stat
+2025-06-01 23:50:41,632 [INFO] Starting Flask application...
+2025-06-01 23:50:41,646 [INFO] Starting Flask application...
+2025-06-01 23:50:41,670 [WARNING]  * Debugger is active!
+2025-06-01 23:50:41,677 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:50:41,696 [WARNING]  * Debugger is active!
+2025-06-01 23:50:41,707 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:50:41,711 [INFO] Starting Flask application...
+2025-06-01 23:50:41,755 [WARNING]  * Debugger is active!
+2025-06-01 23:50:41,756 [INFO] Starting Flask application...
+2025-06-01 23:50:41,767 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:50:41,799 [WARNING]  * Debugger is active!
+2025-06-01 23:50:41,803 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:50:41,843 [INFO] Starting Flask application...
+2025-06-01 23:50:41,868 [INFO] Starting Flask application...
+2025-06-01 23:50:41,878 [WARNING]  * Debugger is active!
+2025-06-01 23:50:41,883 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:50:41,911 [WARNING]  * Debugger is active!
+2025-06-01 23:50:41,916 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:50:42,026 [INFO] Starting Flask application...
+2025-06-01 23:50:42,047 [WARNING]  * Debugger is active!
+2025-06-01 23:50:42,050 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:51:17,236 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\config.py', reloading
+2025-06-01 23:51:17,236 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\config.py', reloading
+2025-06-01 23:51:17,237 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\config.py', reloading
+2025-06-01 23:51:17,238 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\config.py', reloading
+2025-06-01 23:51:17,379 [INFO]  * Restarting with stat
+2025-06-01 23:51:17,380 [INFO]  * Restarting with stat
+2025-06-01 23:51:17,388 [INFO]  * Restarting with stat
+2025-06-01 23:51:17,391 [INFO]  * Restarting with stat
+2025-06-01 23:51:17,447 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\config.py', reloading
+2025-06-01 23:51:17,454 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\config.py', reloading
+2025-06-01 23:51:17,459 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\config.py', reloading
+2025-06-01 23:51:17,613 [INFO]  * Restarting with stat
+2025-06-01 23:51:17,616 [INFO]  * Restarting with stat
+2025-06-01 23:51:17,621 [INFO]  * Restarting with stat
+2025-06-01 23:51:18,454 [INFO] Starting Flask application...
+2025-06-01 23:51:18,455 [INFO] Starting Flask application...
+2025-06-01 23:51:18,488 [WARNING]  * Debugger is active!
+2025-06-01 23:51:18,491 [INFO] Starting Flask application...
+2025-06-01 23:51:18,492 [WARNING]  * Debugger is active!
+2025-06-01 23:51:18,493 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:51:18,496 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:51:18,532 [WARNING]  * Debugger is active!
+2025-06-01 23:51:18,537 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:51:18,548 [INFO] Starting Flask application...
+2025-06-01 23:51:18,579 [WARNING]  * Debugger is active!
+2025-06-01 23:51:18,584 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:51:18,586 [INFO] Starting Flask application...
+2025-06-01 23:51:18,609 [INFO] Starting Flask application...
+2025-06-01 23:51:18,615 [WARNING]  * Debugger is active!
+2025-06-01 23:51:18,620 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:51:18,635 [WARNING]  * Debugger is active!
+2025-06-01 23:51:18,639 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:51:18,640 [INFO] Starting Flask application...
+2025-06-01 23:51:18,662 [WARNING]  * Debugger is active!
+2025-06-01 23:51:18,664 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:51:27,371 [INFO] Starting Flask application...
+2025-06-01 23:51:27,405 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.11.96:5000
+2025-06-01 23:51:27,406 [INFO] [33mPress CTRL+C to quit[0m
+2025-06-01 23:51:27,407 [INFO]  * Restarting with stat
+2025-06-01 23:51:28,599 [INFO] Starting Flask application...
+2025-06-01 23:51:28,631 [WARNING]  * Debugger is active!
+2025-06-01 23:51:28,637 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:51:55,988 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:51:56,020 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:51:56,024 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:51:56,025 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:51:56,025 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:51:56,026 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:51:56,068 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:51:56,072 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:51:56,193 [INFO]  * Restarting with stat
+2025-06-01 23:51:56,224 [INFO]  * Restarting with stat
+2025-06-01 23:51:56,235 [INFO]  * Restarting with stat
+2025-06-01 23:51:56,248 [INFO]  * Restarting with stat
+2025-06-01 23:51:56,253 [INFO]  * Restarting with stat
+2025-06-01 23:51:56,260 [INFO]  * Restarting with stat
+2025-06-01 23:51:56,281 [INFO]  * Restarting with stat
+2025-06-01 23:51:56,291 [INFO]  * Restarting with stat
+2025-06-01 23:51:57,331 [INFO] Starting Flask application...
+2025-06-01 23:51:57,371 [INFO] Starting Flask application...
+2025-06-01 23:51:57,379 [WARNING]  * Debugger is active!
+2025-06-01 23:51:57,383 [INFO] Starting Flask application...
+2025-06-01 23:51:57,388 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:51:57,405 [INFO] Starting Flask application...
+2025-06-01 23:51:57,406 [INFO] Starting Flask application...
+2025-06-01 23:51:57,427 [WARNING]  * Debugger is active!
+2025-06-01 23:51:57,430 [INFO] Starting Flask application...
+2025-06-01 23:51:57,434 [WARNING]  * Debugger is active!
+2025-06-01 23:51:57,438 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:51:57,438 [INFO] Starting Flask application...
+2025-06-01 23:51:57,439 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:51:57,440 [WARNING]  * Debugger is active!
+2025-06-01 23:51:57,443 [WARNING]  * Debugger is active!
+2025-06-01 23:51:57,446 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:51:57,448 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:51:57,462 [WARNING]  * Debugger is active!
+2025-06-01 23:51:57,471 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:51:57,488 [INFO] Starting Flask application...
+2025-06-01 23:51:57,493 [WARNING]  * Debugger is active!
+2025-06-01 23:51:57,498 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:51:57,522 [WARNING]  * Debugger is active!
+2025-06-01 23:51:57,526 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:52:20,794 [INFO] 127.0.0.1 - - [01/Jun/2025 23:52:20] "GET /health HTTP/1.1" 200 -
+2025-06-01 23:52:20,801 [INFO] 127.0.0.1 - - [01/Jun/2025 23:52:20] "POST /api/v1/auth/login HTTP/1.1" 200 -
+2025-06-01 23:52:20,807 [INFO] 127.0.0.1 - - [01/Jun/2025 23:52:20] "GET /api/v1/auth/verify HTTP/1.1" 200 -
+2025-06-01 23:52:21,058 [INFO] 127.0.0.1 - - [01/Jun/2025 23:52:21] "[35m[1mGET /api/v1/jobs/ HTTP/1.1[0m" 500 -
+2025-06-01 23:52:21,165 [INFO] 127.0.0.1 - - [01/Jun/2025 23:52:21] "[35m[1mPOST /api/v1/jobs/ HTTP/1.1[0m" 500 -
+2025-06-01 23:52:38,021 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:52:38,026 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:52:38,027 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:52:38,029 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:52:38,029 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:52:38,030 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:52:38,032 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:52:38,035 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:52:38,239 [INFO]  * Restarting with stat
+2025-06-01 23:52:38,243 [INFO]  * Restarting with stat
+2025-06-01 23:52:38,265 [INFO]  * Restarting with stat
+2025-06-01 23:52:38,272 [INFO]  * Restarting with stat
+2025-06-01 23:52:38,300 [INFO]  * Restarting with stat
+2025-06-01 23:52:38,304 [INFO]  * Restarting with stat
+2025-06-01 23:52:38,311 [INFO]  * Restarting with stat
+2025-06-01 23:52:38,333 [INFO]  * Restarting with stat
+2025-06-01 23:52:39,643 [INFO] Starting Flask application...
+2025-06-01 23:52:39,673 [INFO] Starting Flask application...
+2025-06-01 23:52:39,682 [INFO] Starting Flask application...
+2025-06-01 23:52:39,683 [INFO] Starting Flask application...
+2025-06-01 23:52:39,688 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:52:39,719 [WARNING]  * Debugger is active!
+2025-06-01 23:52:39,722 [WARNING]  * Debugger is active!
+2025-06-01 23:52:39,724 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:52:39,727 [WARNING]  * Debugger is active!
+2025-06-01 23:52:39,727 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:52:39,732 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:52:39,765 [INFO] Starting Flask application...
+2025-06-01 23:52:39,798 [WARNING]  * Debugger is active!
+2025-06-01 23:52:39,802 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:52:39,803 [INFO] Starting Flask application...
+2025-06-01 23:52:39,815 [INFO] Starting Flask application...
+2025-06-01 23:52:39,818 [INFO] Starting Flask application...
+2025-06-01 23:52:39,836 [WARNING]  * Debugger is active!
+2025-06-01 23:52:39,839 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:52:39,840 [WARNING]  * Debugger is active!
+2025-06-01 23:52:39,843 [WARNING]  * Debugger is active!
+2025-06-01 23:52:39,845 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:52:39,848 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:52:53,883 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:52:53,905 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:52:53,909 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:52:53,912 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:52:53,988 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:52:54,027 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:52:54,037 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:52:54,038 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\app\\routes\\jobs.py', reloading
+2025-06-01 23:52:54,076 [INFO]  * Restarting with stat
+2025-06-01 23:52:54,103 [INFO]  * Restarting with stat
+2025-06-01 23:52:54,104 [INFO]  * Restarting with stat
+2025-06-01 23:52:54,135 [INFO]  * Restarting with stat
+2025-06-01 23:52:54,203 [INFO]  * Restarting with stat
+2025-06-01 23:52:54,221 [INFO]  * Restarting with stat
+2025-06-01 23:52:54,229 [INFO]  * Restarting with stat
+2025-06-01 23:52:54,239 [INFO]  * Restarting with stat
+2025-06-01 23:54:14,046 [INFO] Starting Flask application...
+2025-06-01 23:54:14,105 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.11.96:5000
+2025-06-01 23:54:14,105 [INFO] [33mPress CTRL+C to quit[0m
+2025-06-01 23:54:14,107 [INFO]  * Restarting with stat
+2025-06-01 23:54:15,305 [INFO] Starting Flask application...
+2025-06-01 23:54:15,360 [WARNING]  * Debugger is active!
+2025-06-01 23:54:15,375 [INFO]  * Debugger PIN: 915-996-791
+2025-06-01 23:54:23,562 [INFO] 127.0.0.1 - - [01/Jun/2025 23:54:23] "GET /health HTTP/1.1" 200 -
+2025-06-01 23:54:23,762 [INFO] 127.0.0.1 - - [01/Jun/2025 23:54:23] "POST /api/v1/auth/login HTTP/1.1" 200 -
+2025-06-01 23:54:23,776 [INFO] 127.0.0.1 - - [01/Jun/2025 23:54:23] "GET /api/v1/auth/verify HTTP/1.1" 200 -
+2025-06-01 23:54:24,232 [INFO] 127.0.0.1 - - [01/Jun/2025 23:54:24] "[35m[1mGET /api/v1/jobs/ HTTP/1.1[0m" 500 -
+2025-06-01 23:54:24,645 [INFO] 127.0.0.1 - - [01/Jun/2025 23:54:24] "[35m[1mPOST /api/v1/jobs/ HTTP/1.1[0m" 500 -
+2025-06-01 23:54:41,885 [INFO]  * Detected change in 'C:\\Users\\ntielmann\\Documents\\barcodescanner\\webapp\\backend\\config.py', reloading
+2025-06-01 23:54:42,089 [INFO]  * Restarting with stat
+2025-06-01 23:54:43,356 [INFO] Starting Flask application...
+2025-06-01 23:54:43,404 [WARNING]  * Debugger is active!
+2025-06-01 23:54:43,410 [INFO]  * Debugger PIN: 915-996-791

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barcode Scanner Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .test-section {
+            border: 1px solid #ddd;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .success { color: green; }
+        .error { color: red; }
+        .warning { color: orange; }
+        button {
+            background: #1976d2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #1565c0;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        #video {
+            width: 100%;
+            max-width: 400px;
+            border: 2px solid #1976d2;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Barcode Scanner Web App - Test Page</h1>
+    
+    <div class="test-section">
+        <h2>1. Backend API Connection Test</h2>
+        <button onclick="testBackendConnection()">Test Backend Connection</button>
+        <div id="backend-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>2. Authentication Test</h2>
+        <input type="text" id="username" placeholder="Username" value="test">
+        <input type="password" id="password" placeholder="Password" value="test">
+        <button onclick="testLogin()">Test Login</button>
+        <div id="auth-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>3. Camera Access Test</h2>
+        <button onclick="testCamera()">Test Camera Access</button>
+        <button onclick="stopCamera()" class="hidden" id="stop-camera">Stop Camera</button>
+        <br>
+        <video id="video" class="hidden" autoplay></video>
+        <div id="camera-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>4. Jobs API Test</h2>
+        <button onclick="testJobsAPI()">Test Jobs API</button>
+        <div id="jobs-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>5. Device Verification Test</h2>
+        <input type="text" id="device-id" placeholder="Device ID" value="TEST001">
+        <button onclick="testDeviceVerification()">Test Device Verification</button>
+        <div id="device-result"></div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:5000';
+        let authToken = null;
+        let videoStream = null;
+
+        async function testBackendConnection() {
+            const resultDiv = document.getElementById('backend-result');
+            try {
+                const response = await fetch(`${API_BASE}/health`);
+                const data = await response.json();
+                resultDiv.innerHTML = `<span class="success">✅ Backend connected: ${JSON.stringify(data)}</span>`;
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">❌ Backend connection failed: ${error.message}</span>`;
+            }
+        }
+
+        async function testLogin() {
+            const resultDiv = document.getElementById('auth-result');
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch(`${API_BASE}/api/v1/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const data = await response.json();
+                
+                if (response.ok) {
+                    authToken = data.token;
+                    resultDiv.innerHTML = `<span class="success">✅ Login successful! Token received.</span>`;
+                } else {
+                    resultDiv.innerHTML = `<span class="warning">⚠️ Login failed: ${data.message}</span>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">❌ Login request failed: ${error.message}</span>`;
+            }
+        }
+
+        async function testCamera() {
+            const resultDiv = document.getElementById('camera-result');
+            const video = document.getElementById('video');
+            const stopButton = document.getElementById('stop-camera');
+
+            try {
+                videoStream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { facingMode: 'environment' } 
+                });
+                video.srcObject = videoStream;
+                video.classList.remove('hidden');
+                stopButton.classList.remove('hidden');
+                resultDiv.innerHTML = `<span class="success">✅ Camera access granted!</span>`;
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">❌ Camera access failed: ${error.message}</span>`;
+            }
+        }
+
+        function stopCamera() {
+            const video = document.getElementById('video');
+            const stopButton = document.getElementById('stop-camera');
+            
+            if (videoStream) {
+                videoStream.getTracks().forEach(track => track.stop());
+                video.classList.add('hidden');
+                stopButton.classList.add('hidden');
+            }
+        }
+
+        async function testJobsAPI() {
+            const resultDiv = document.getElementById('jobs-result');
+            
+            try {
+                const headers = {
+                    'Content-Type': 'application/json',
+                };
+                
+                if (authToken) {
+                    headers['Authorization'] = `Bearer ${authToken}`;
+                }
+
+                const response = await fetch(`${API_BASE}/api/v1/jobs`, { headers });
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = `<span class="success">✅ Jobs API working! Found ${data.length} jobs.</span>`;
+                } else {
+                    resultDiv.innerHTML = `<span class="warning">⚠️ Jobs API response: ${data.message}</span>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">❌ Jobs API failed: ${error.message}</span>`;
+            }
+        }
+
+        async function testDeviceVerification() {
+            const resultDiv = document.getElementById('device-result');
+            const deviceId = document.getElementById('device-id').value;
+            
+            try {
+                const headers = {
+                    'Content-Type': 'application/json',
+                };
+                
+                if (authToken) {
+                    headers['Authorization'] = `Bearer ${authToken}`;
+                }
+
+                const response = await fetch(`${API_BASE}/api/v1/devices/verify/${deviceId}`, { headers });
+                const data = await response.json();
+                
+                if (response.ok) {
+                    if (data.valid) {
+                        resultDiv.innerHTML = `<span class="success">✅ Device verified: ${JSON.stringify(data.device)}</span>`;
+                    } else {
+                        resultDiv.innerHTML = `<span class="warning">⚠️ Device not found: ${data.message}</span>`;
+                    }
+                } else {
+                    resultDiv.innerHTML = `<span class="warning">⚠️ Device verification failed: ${data.message}</span>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">❌ Device verification request failed: ${error.message}</span>`;
+            }
+        }
+
+        // Auto-test backend connection on page load
+        window.onload = function() {
+            testBackendConnection();
+        };
+    </script>
+</body>
+</html>
