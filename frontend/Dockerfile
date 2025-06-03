@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Install dependencies first (for better caching)
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm ci && npm install -g cross-env
 
 # Set build environment
 ENV NODE_OPTIONS="--max-old-space-size=4096"
