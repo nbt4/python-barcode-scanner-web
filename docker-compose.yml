@@ -11,8 +11,8 @@ services:
       - CORS_ORIGINS=*
       - FLASK_ENV=production
       - FLASK_DEBUG=true
-    expose:
-      - "5000"
+    ports:
+      - "5000:5000"
     volumes:
       - ./backend:/app
     restart: unless-stopped
@@ -36,8 +36,8 @@ services:
     environment:
       - REACT_APP_API_URL=/api/v1
       - NODE_ENV=production
-    expose:
-      - "80"
+    ports:
+      - "3000:80"
     depends_on:
       - backend
     restart: unless-stopped

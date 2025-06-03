@@ -1,120 +1,42 @@
-from flask import Blueprint, request, jsonify, current_app
+from flask import Blueprint, request, jsonify
 import jwt
 import datetime
-from functools import wraps
 import os
-import pymysql
 
 auth_bp = Blueprint('auth', __name__)
 
-def get_db_connection():
-    try:
-        connection = pymysql.connect(
-            host=current_app.config['MYSQL_HOST'],
-            user=current_app.config['MYSQL_USER'],
-            password=current_app.config['MYSQL_PASSWORD'],
-            database=current_app.config['MYSQL_DATABASE'],
-            cursorclass=pymysql.cursors.DictCursor,
-            ssl_disabled=True,
-            charset='utf8mb4',
-            connect_timeout=5
-        )
-        return connection
-    except Exception as e:
-        current_app.logger.error(f"Database connection error: {str(e)}")
-        return None
-
-def create_token(user_data):
-    """Create a JWT token for the authenticated user"""
-    payload = {
-        'user': user_data['username'],
-        'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)
-    }
-    return jwt.encode(payload, os.getenv('JWT_SECRET_KEY', 'dev-secret-key'), algorithm='HS256')
-
-def token_required(f):
-    """Decorator to protect routes with JWT authentication"""
-    @wraps(f)
-    def decorated(*args, **kwargs):
-        token = None
-        auth_header = request.headers.get('Authorization')
-
-        if auth_header and auth_header.startswith('Bearer '):
-            token = auth_header.split(' ')[1]
-
-        if not token:
-            return jsonify({'message': 'Token is missing'}), 401
-
-        try:
-            jwt.decode(token, os.getenv('JWT_SECRET_KEY', 'dev-secret-key'), algorithms=['HS256'])
-        except jwt.ExpiredSignatureError:
-            return jsonify({'message': 'Token has expired'}), 401
-        except jwt.InvalidTokenError:
-            return jsonify({'message': 'Invalid token'}), 401
-
-        return f(*args, **kwargs)
-    return decorated
-
 @auth_bp.route('/login', methods=['POST'])
 def login():
-    """Login endpoint that returns a JWT token"""
-    try:
-        data = request.get_json()
-        if not data:
-            current_app.logger.error("No JSON data in request")
-            return jsonify({'message': 'No data provided'}), 400
-            
-        username = data.get('username')
-        password = data.get('password')
+    """Login endpoint"""
+    data = request.get_json()
+    
+    # Simple authentication - replace with your actual auth logic
+    if data and data.get('username') and data.get('password'):
+        # Generate JWT token
+        token = jwt.encode({
+            'user': data['username'],
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=24)
+        }, os.getenv('JWT_SECRET_KEY', 'default-secret'), algorithm='HS256')
         
-        current_app.logger.debug(f"Login attempt for user: {username}")
-        
-        if not username or not password:
-            current_app.logger.error("Missing username or password")
-            return jsonify({'message': 'Missing username or password'}), 400
-        
-        # Try to connect with the provided credentials
-        try:
-            connection = pymysql.connect(
-                host=current_app.config['MYSQL_HOST'],
-                user=username,
-                password=password,
-                database=current_app.config['MYSQL_DATABASE'],
-                cursorclass=pymysql.cursors.DictCursor,
-                ssl_disabled=True,
-                charset='utf8mb4',
-                connect_timeout=5
-            )
-            
-            # Test the connection
-            with connection.cursor() as cursor:
-                cursor.execute('SELECT 1')
-                
-            # If we get here, the credentials were valid
-            connection.close()
-            
-            # Create JWT token
-            token = create_token({'username': username})
-            current_app.logger.info(f"Login successful for user: {username}")
-            
-            response = jsonify({
-                'token': token,
-                'message': 'Login successful',
-                'username': username
-            })
-            
-            return response, 200
-            
-        except pymysql.Error as e:
-            current_app.logger.error(f"Database error during login for user {username}: {str(e)}")
-            return jsonify({'message': 'Invalid credentials', 'error': str(e)}), 401
-            
-    except Exception as e:
-        current_app.logger.error(f"Unexpected error during login: {str(e)}")
-        return jsonify({'message': 'Server error', 'error': str(e)}), 500
+        return jsonify({
+            'token': token,
+            'user': data['username']
+        })
+    
+    return jsonify({'error': 'Invalid credentials'}), 401
 
-@auth_bp.route('/verify', methods=['GET'])
-@token_required
+@auth_bp.route('/verify', methods=['POST'])
 def verify_token():
-    """Endpoint to verify if the JWT token is valid"""
-    return jsonify({'message': 'Token is valid'}), 200
+    """Verify JWT token"""
+    token = request.headers.get('Authorization')
+    if token:
+        try:
+            token = token.replace('Bearer ', '')
+            decoded = jwt.decode(token, os.getenv('JWT_SECRET_KEY', 'default-secret'), algorithms=['HS256'])
+            return jsonify({'valid': True, 'user': decoded['user']})
+        except jwt.ExpiredSignatureError:
+            return jsonify({'error': 'Token expired'}), 401
+        except jwt.InvalidTokenError:
+            return jsonify({'error': 'Invalid token'}), 401
+    
+    return jsonify({'error': 'No token provided'}), 401
