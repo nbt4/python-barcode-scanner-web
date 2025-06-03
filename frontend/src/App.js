@@ -19,21 +19,6 @@ import JobDetail from './pages/JobDetail';
 import Scanner from './pages/Scanner';
 import Reports from './pages/Reports';
 
-// Theme configuration
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#1976d2',
-    },
-    secondary: {
-      main: '#dc004e',
-    },
-  },
-  typography: {
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-  },
-});
-
 function App() {
   return (
     <ThemeProvider theme={theme}>
