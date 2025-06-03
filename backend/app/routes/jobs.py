@@ -39,16 +39,41 @@ def get_jobs():
 
     try:
         cursor = conn.cursor()
-        cursor.execute("""
+        
+        # Base query with all joins
+        query = """
             SELECT j.*, c.companyname, c.firstname, c.lastname, s.status,
-                   COUNT(jd.deviceID) as device_count 
+                   COUNT(DISTINCT jd.deviceID) as device_count,
+                   COALESCE(SUM(CASE WHEN jd.customPrice IS NOT NULL 
+                                    THEN jd.customPrice 
+                                    ELSE d.price 
+                               END), 0) as total_price
             FROM jobs j 
             LEFT JOIN customers c ON j.customerID = c.customerID
             LEFT JOIN status s ON j.statusID = s.statusID
             LEFT JOIN jobdevices jd ON j.jobID = jd.jobID 
-            GROUP BY j.jobID 
-            ORDER BY j.startDate DESC
-        """)
+            LEFT JOIN devices d ON jd.deviceID = d.deviceID
+        """
+        
+        # Add search conditions if provided
+        conditions = []
+        params = []
+        
+        if request.args.get('search'):
+            search = f"%{request.args.get('search')}%"
+            conditions.append("(c.companyname LIKE %s OR c.firstname LIKE %s OR c.lastname LIKE %s)")
+            params.extend([search, search, search])
+            
+        if request.args.get('status'):
+            conditions.append("s.status = %s")
+            params.append(request.args.get('status'))
+            
+        if conditions:
+            query += " WHERE " + " AND ".join(conditions)
+            
+        query += " GROUP BY j.jobID ORDER BY j.startDate DESC"
+        
+        cursor.execute(query, params)
         jobs = cursor.fetchall()
         
         # Format customer name

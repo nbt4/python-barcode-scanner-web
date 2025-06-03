@@ -18,6 +18,10 @@ def create_app():
     from os.path import dirname, join, abspath
     sys.path.insert(0, abspath(dirname(dirname(__file__))))
     from config import Config
+    from .utils.encoders import CustomJSONEncoder
+    
+    # Set custom JSON encoder
+    app.json_encoder = CustomJSONEncoder
     
     # Debug: Print environment variables
     print(f"Debug - ENV vars: MYSQL_USER={os.getenv('MYSQL_USER')}")
