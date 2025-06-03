@@ -17,16 +17,28 @@ def get_db_connection():
         config = current_app.config
         print(f"Debug - Connection attempt with: host={config['MYSQL_HOST']}, db={config['MYSQL_DATABASE']}, user={config['MYSQL_USER']}")
         
-        return pymysql.connect(
+        connection = pymysql.connect(
             host=config['MYSQL_HOST'],
             database=config['MYSQL_DATABASE'],
             user=config['MYSQL_USER'],
             password=config['MYSQL_PASSWORD'],
             cursorclass=pymysql.cursors.DictCursor,
-            ssl={"ssl": False}
+            ssl={"ssl": False},
+            port=3306,
+            connect_timeout=10,
+            read_timeout=30,
+            write_timeout=30,
+            charset='utf8mb4',
+            ssl_verify_cert=False,
+            ssl_verify_identity=False
         )
+        print("Debug - Database connection successful")
+        return connection
     except pymysql.Error as err:
         print(f"Error connecting to database: {err}")
+        return None
+    except Exception as e:
+        print(f"Unexpected error connecting to database: {str(e)}")
         return None
 
 @jobs_bp.route('', methods=['GET'])
@@ -39,16 +51,28 @@ def get_jobs():
 
     try:
         cursor = conn.cursor()
-        
-        # Base query with all joins
+          # Base query with all joins
         query = """
-            SELECT j.*, c.companyname, c.firstname, c.lastname, s.status,
-                   COUNT(DISTINCT jd.deviceID) as device_count,
-                   COALESCE(SUM(CASE WHEN jd.customPrice IS NOT NULL 
-                                    THEN jd.customPrice 
-                                    ELSE d.price 
-                               END), 0) as total_price
-            FROM jobs j 
+            SELECT 
+                j.jobID,
+                j.customerID,
+                j.statusID,
+                j.startDate,
+                j.endDate,
+                j.description,
+                j.created_at,
+                j.updated_at,
+                c.companyname,
+                COALESCE(c.firstname, '') as firstname,
+                COALESCE(c.lastname, '') as lastname,
+                COALESCE(s.status, 'Unknown') as status,
+                COUNT(DISTINCT jd.deviceID) as device_count,
+                CAST(COALESCE(SUM(CASE 
+                    WHEN jd.customPrice IS NOT NULL THEN jd.customPrice 
+                    WHEN d.price IS NOT NULL THEN d.price
+                    ELSE 0 
+                END), 0) AS DECIMAL(10,2)) as total_price
+            FROM jobs j
             LEFT JOIN customers c ON j.customerID = c.customerID
             LEFT JOIN status s ON j.statusID = s.statusID
             LEFT JOIN jobdevices jd ON j.jobID = jd.jobID 
@@ -73,17 +97,37 @@ def get_jobs():
             
         query += " GROUP BY j.jobID ORDER BY j.startDate DESC"
         
-        cursor.execute(query, params)
-        jobs = cursor.fetchall()
+        cursor.execute(query, params)        jobs = cursor.fetchall()
         
-        # Format customer name
+        # Format customer name and ensure all dates are strings
+        formatted_jobs = []
         for job in jobs:
+            formatted_job = dict(job)
+            
+            # Format customer name
             if job.get('companyname'):
-                job['customer_name'] = job['companyname']
+                formatted_job['customer_name'] = job['companyname']
             else:
-                job['customer_name'] = f"{job.get('lastname', '')}, {job.get('firstname', '')}".strip(', ')
+                name_parts = [job.get('lastname', ''), job.get('firstname', '')]
+                formatted_job['customer_name'] = ', '.join(filter(None, name_parts))
+            
+            # Convert dates to strings
+            if formatted_job.get('startDate'):
+                formatted_job['startDate'] = formatted_job['startDate'].strftime('%Y-%m-%d')
+            if formatted_job.get('endDate'):
+                formatted_job['endDate'] = formatted_job['endDate'].strftime('%Y-%m-%d')
+            if formatted_job.get('created_at'):
+                formatted_job['created_at'] = formatted_job['created_at'].strftime('%Y-%m-%d %H:%M:%S')
+            if formatted_job.get('updated_at'):
+                formatted_job['updated_at'] = formatted_job['updated_at'].strftime('%Y-%m-%d %H:%M:%S')
+                
+            # Ensure numeric values are properly formatted
+            formatted_job['device_count'] = int(formatted_job.get('device_count', 0))
+            formatted_job['total_price'] = float(formatted_job.get('total_price', 0))
+            
+            formatted_jobs.append(formatted_job)
         
-        return jsonify(jobs)
+        return jsonify(formatted_jobs)
     except pymysql.Error as err:
         print(f"Database error: {err}")
         return jsonify({'message': 'Database error occurred'}), 500

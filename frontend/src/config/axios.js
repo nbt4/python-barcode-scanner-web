@@ -1,13 +1,15 @@
 import axios from 'axios';
 
-// Get the API URL from environment variables, fallback to relative URL for docker setup
-const baseURL = process.env.REACT_APP_API_URL || '';
+const baseURL = '/api/v1';  // This matches our nginx configuration
 
 const instance = axios.create({
   baseURL,
-  timeout: 10000,
+  timeout: 30000,  // Increased timeout for slower connections
   headers: {
     'Content-Type': 'application/json',
+  },
+  validateStatus: status => {
+    return status >= 200 && status < 300; // Default
   },
 });
 

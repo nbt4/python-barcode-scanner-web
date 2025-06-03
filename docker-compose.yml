@@ -1,21 +1,26 @@
-services:
-  backend:
+services:  backend:
     build: ./backend
     container_name: barcodescanner-backend
     environment:
-      - MYSQL_HOST=${MYSQL_HOST}
-      - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_HOST=tsunami-events.de
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=goQhQTACjH2cwx657fdNDes6SicLWI
+      - MYSQL_DATABASE=TS-Lager
       - JWT_SECRET_KEY=${JWT_SECRET_KEY}
       - CORS_ORIGINS=*
       - FLASK_ENV=production
-      - FLASK_DEBUG=False
+      - FLASK_DEBUG=True  # Set to True temporarily for debugging
     expose:
       - "5000"
     volumes:
       - ./backend:/app
-    restart: unless-stopped    
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     networks:
       - app-network
       - mysql
