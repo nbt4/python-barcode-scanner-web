@@ -8,9 +8,6 @@ const instance = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  validateStatus: status => {
-    return status >= 200 && status < 300; // Default
-  },
 });
 
 // Add a request interceptor
@@ -23,17 +20,34 @@ instance.interceptors.request.use(
     return config;
   },
   (error) => {
+    console.error('Request error:', error);
     return Promise.reject(error);
   }
 );
 
-// Add a response interceptor to handle 401s
+// Add a response interceptor
 instance.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    return response;
+  },
   (error) => {
-    if (error.response?.status === 401) {
-      localStorage.removeItem('token');
-      window.location.href = '/login';
+    if (error.response) {
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx
+      console.error('Response error data:', error.response.data);
+      console.error('Response error status:', error.response.status);
+      
+      if (error.response.status === 401) {
+        // Handle unauthorized access
+        localStorage.removeItem('token');
+        window.location.href = '/login';
+      }
+    } else if (error.request) {
+      // The request was made but no response was received
+      console.error('No response received:', error.request);
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      console.error('Error setting up request:', error.message);
     }
     return Promise.reject(error);
   }

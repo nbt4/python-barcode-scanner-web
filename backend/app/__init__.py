@@ -10,8 +10,14 @@ def create_app():
     """Initialize and configure the Flask application"""
     app = Flask(__name__)
     
-    # Enable CORS
-    CORS(app)
+    # Enable CORS with proper configuration
+    CORS(app, resources={
+        r"/api/v1/*": {
+            "origins": "*",
+            "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+            "allow_headers": ["Content-Type", "Authorization"]
+        }
+    })
     
     # Load configuration from Config class
     import sys
@@ -23,21 +29,14 @@ def create_app():
     # Set custom JSON encoder
     app.json_encoder = CustomJSONEncoder
     
-    # Debug: Print environment variables
-    print(f"Debug - ENV vars: MYSQL_USER={os.getenv('MYSQL_USER')}")
-    
     app.config.from_object(Config)
     
-    # Debug: Print loaded config
-    print(f"Debug - Config: MYSQL_USER={app.config.get('MYSQL_USER')}")
-    
-    # Register blueprints
-    from .routes.health import health_bp
-    from .routes.auth import auth_bp
-    from .routes.jobs import jobs_bp
-    
-    app.register_blueprint(health_bp)
-    app.register_blueprint(auth_bp, url_prefix='/api/v1/auth')
-    app.register_blueprint(jobs_bp, url_prefix='/api/v1/jobs')
+    # Register blueprints with URL prefix
+    from .routes import auth, jobs, devices, health, reports
+    app.register_blueprint(auth.auth_bp, url_prefix='/api/v1/auth')
+    app.register_blueprint(jobs.jobs_bp, url_prefix='/api/v1/jobs')
+    app.register_blueprint(devices.devices_bp, url_prefix='/api/v1/devices')
+    app.register_blueprint(health.health_bp, url_prefix='/api/v1/health')
+    app.register_blueprint(reports.reports_bp, url_prefix='/api/v1/reports')
     
     return app

@@ -60,42 +60,58 @@ def login():
     """Login endpoint that returns a JWT token"""
     try:
         data = request.get_json()
+        if not data:
+            current_app.logger.error("No JSON data in request")
+            return jsonify({'message': 'No data provided'}), 400
+            
         username = data.get('username')
         password = data.get('password')
         
+        current_app.logger.debug(f"Login attempt for user: {username}")
+        
         if not username or not password:
+            current_app.logger.error("Missing username or password")
             return jsonify({'message': 'Missing username or password'}), 400
         
         # Try to connect with the provided credentials
-        connection = pymysql.connect(
-            host=current_app.config['MYSQL_HOST'],
-            user=username,
-            password=password,
-            database=current_app.config['MYSQL_DATABASE'],
-            cursorclass=pymysql.cursors.DictCursor,
-            ssl_disabled=True,
-            charset='utf8mb4',
-            connect_timeout=5
-        )
-        
-        # Test the connection
-        with connection.cursor() as cursor:
-            cursor.execute('SELECT 1')
+        try:
+            connection = pymysql.connect(
+                host=current_app.config['MYSQL_HOST'],
+                user=username,
+                password=password,
+                database=current_app.config['MYSQL_DATABASE'],
+                cursorclass=pymysql.cursors.DictCursor,
+                ssl_disabled=True,
+                charset='utf8mb4',
+                connect_timeout=5
+            )
             
-        # If we get here, the credentials were valid
-        connection.close()
-        
-        # Create JWT token
-        token = create_token({'username': username})
-        current_app.logger.info(f"Login successful for user: {username}")
-        return jsonify({'token': token, 'message': 'Login successful'}), 200
-        
-    except pymysql.Error as e:
-        current_app.logger.error(f"Database error during login: {str(e)}")
-        return jsonify({'message': 'Invalid credentials'}), 401
+            # Test the connection
+            with connection.cursor() as cursor:
+                cursor.execute('SELECT 1')
+                
+            # If we get here, the credentials were valid
+            connection.close()
+            
+            # Create JWT token
+            token = create_token({'username': username})
+            current_app.logger.info(f"Login successful for user: {username}")
+            
+            response = jsonify({
+                'token': token,
+                'message': 'Login successful',
+                'username': username
+            })
+            
+            return response, 200
+            
+        except pymysql.Error as e:
+            current_app.logger.error(f"Database error during login for user {username}: {str(e)}")
+            return jsonify({'message': 'Invalid credentials', 'error': str(e)}), 401
+            
     except Exception as e:
         current_app.logger.error(f"Unexpected error during login: {str(e)}")
-        return jsonify({'message': 'Login failed'}), 500
+        return jsonify({'message': 'Server error', 'error': str(e)}), 500
 
 @auth_bp.route('/verify', methods=['GET'])
 @token_required
