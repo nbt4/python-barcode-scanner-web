@@ -18,12 +18,16 @@ services:
     networks:
       - app-network
       - mysql
-      - proxy  
-  frontend:
+      - proxy    frontend:
     build: 
       context: ./frontend
+      dockerfile: Dockerfile
       args:
         - NODE_ENV=production
+      cache_from:
+        - type=local,src=.docker-cache
+      cache_to:
+        - type=local,dest=.docker-cache,mode=max
     container_name: barcodescanner-frontend
     environment:
       - REACT_APP_API_URL=${REACT_APP_API_URL}
