@@ -16,15 +16,18 @@ RUN apt-get update && apt-get install -y \
     cmake \
     pkg-config \
     libffi-dev \
-    cargo \
-    rustc \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
+# Create and activate virtual environment
+RUN python -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+
 COPY requirements.txt .
 
-# Upgrade pip and install requirements
-RUN python -m pip install --no-cache-dir --upgrade pip && \
+# Upgrade pip and install requirements in virtual environment
+RUN . /opt/venv/bin/activate && \
+    python -m pip install --no-cache-dir --upgrade pip && \
     python -m pip install --no-cache-dir wheel setuptools && \
     python -m pip install --no-cache-dir -r requirements.txt
 

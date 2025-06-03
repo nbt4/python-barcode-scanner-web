@@ -1,8 +1,11 @@
 from flask import Blueprint, request, jsonify
 from ..routes.auth import token_required
 import pymysql
+import pymysql.cursors
+from pymysql.err import OperationalError, Error as PyMySQLError
+import time
 from datetime import datetime
-import os
+from flask import current_app
 from dotenv import load_dotenv
 
 # Reload environment variables
@@ -10,36 +13,80 @@ load_dotenv()
 
 jobs_bp = Blueprint('jobs', __name__)
 
+_connection_pool = None
+
 def get_db_connection():
-    """Get a connection to the MySQL database"""
-    try:
-        from flask import current_app
-        config = current_app.config
-        print(f"Debug - Connection attempt with: host={config['MYSQL_HOST']}, db={config['MYSQL_DATABASE']}, user={config['MYSQL_USER']}")
-        
-        connection = pymysql.connect(
-            host=config['MYSQL_HOST'],
-            database=config['MYSQL_DATABASE'],
-            user=config['MYSQL_USER'],
-            password=config['MYSQL_PASSWORD'],
-            cursorclass=pymysql.cursors.DictCursor,
-            ssl={"ssl": False},
-            port=3306,
-            connect_timeout=10,
-            read_timeout=30,
-            write_timeout=30,
-            charset='utf8mb4',
-            ssl_verify_cert=False,
-            ssl_verify_identity=False
-        )
-        print("Debug - Database connection successful")
-        return connection
-    except pymysql.Error as err:
-        print(f"Error connecting to database: {err}")
-        return None
-    except Exception as e:
-        print(f"Unexpected error connecting to database: {str(e)}")
-        return None
+    """Get a connection to the MySQL database with connection pooling and retry logic"""
+    global _connection_pool
+    max_retries = 3
+    retry_delay = 1  # seconds
+    
+    for attempt in range(max_retries):
+        try:
+            config = current_app.config
+            
+            # Log connection attempt
+            current_app.logger.debug(
+                f"Connection attempt {attempt + 1}/{max_retries} with: "
+                f"host={config['MYSQL_HOST']}, db={config['MYSQL_DATABASE']}, user={config['MYSQL_USER']}"
+            )
+            
+            if _connection_pool is None:
+                # Connection parameters
+                conn_params = {
+                    'host': config['MYSQL_HOST'],
+                    'database': config['MYSQL_DATABASE'],
+                    'user': config['MYSQL_USER'],
+                    'password': config['MYSQL_PASSWORD'],
+                    'cursorclass': pymysql.cursors.DictCursor,
+                    'port': 3306,
+                    'connect_timeout': 10,
+                    'read_timeout': 30,
+                    'write_timeout': 30,
+                    'charset': 'utf8mb4',
+                    'autocommit': True
+                }
+                
+                # SSL config
+                if config.get('MYSQL_SSL_CA'):
+                    conn_params['ssl'] = {
+                        'ca': config['MYSQL_SSL_CA'],
+                        'check_hostname': True
+                    }
+                
+                # Create new connection
+                _connection_pool = pymysql.connect(**conn_params)
+                current_app.logger.info("New database connection established")
+            
+            # Test the connection
+            if not _connection_pool.open:
+                _connection_pool.ping(reconnect=True)
+            
+            current_app.logger.debug("Database connection successful")
+            return _connection_pool
+            
+        except OperationalError as err:
+            current_app.logger.error(f"Database operational error (attempt {attempt + 1}): {err}")
+            if attempt < max_retries - 1:
+                time.sleep(retry_delay)
+                continue
+            raise
+            
+        except PyMySQLError as err:
+            current_app.logger.error(f"Database error: {err}")
+            raise
+            
+        except Exception as e:
+            current_app.logger.error(f"Unexpected database error: {str(e)}")
+            raise
+
+# Function to close the pool - call this when shutting down the app
+def close_db_pool():
+    global _connection_pool
+    if _connection_pool is not None:
+        _connection_pool.close()
+        _connection_pool = None
+        current_app.logger.info("Database connection pool closed")
 
 @jobs_bp.route('', methods=['GET'])
 @token_required
@@ -97,7 +144,8 @@ def get_jobs():
             
         query += " GROUP BY j.jobID ORDER BY j.startDate DESC"
         
-        cursor.execute(query, params)        jobs = cursor.fetchall()
+        cursor.execute(query, params)
+        jobs = cursor.fetchall()
         
         # Format customer name and ensure all dates are strings
         formatted_jobs = []
