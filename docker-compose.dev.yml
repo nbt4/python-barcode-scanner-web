@@ -1,0 +1,46 @@
+services:
+  backend:
+    build: 
+      context: ./backend
+      target: development
+    container_name: barcodescanner-backend-dev
+    environment:
+      - MYSQL_HOST=tsunami-events.de
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=goQhQTACjH2cwx657fdNDes6SicLWI
+      - MYSQL_DATABASE=TS-Lager
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+      - CORS_ORIGINS=*
+      - FLASK_ENV=development
+      - FLASK_DEBUG=true
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./frontend
+      target: development
+    container_name: barcodescanner-frontend-dev
+    environment:
+      - REACT_APP_API_URL=http://localhost:5000/api/v1
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

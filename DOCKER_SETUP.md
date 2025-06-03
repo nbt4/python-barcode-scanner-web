@@ -7,8 +7,30 @@
 3. **Missing Routes**: Created all required Flask route files (auth, jobs, devices, reports, health)
 4. **Port Conflicts**: Changed frontend port from 80 to 3000 to avoid conflicts
 5. **Environment Variables**: Added .env file for JWT secret
+6. **Build Optimization**: Optimized Dockerfiles and added .dockerignore files
+
+## Build Time Information
+
+**First Build**: 200+ seconds is normal due to:
+- React frontend with many dependencies (Material-UI, etc.)
+- Node.js package installation
+- Python package compilation
+
+**Subsequent Builds**: Much faster (~30-60 seconds) due to Docker layer caching
 
 ## Quick Start
+
+### Production Build (Optimized)
+```bash
+cd webapp
+docker-compose up --build -d
+```
+
+### Development Build (Faster, with hot reload)
+```bash
+cd webapp
+docker-compose -f docker-compose.dev.yml up --build -d
+```
 
 ### Windows
 ```cmd
@@ -23,10 +45,22 @@ chmod +x start.sh
 ./start.sh
 ```
 
-### Manual Start
+## Build Optimization Tips
+
+1. **Use Docker BuildKit** (faster builds):
 ```bash
-cd webapp
-docker-compose down
+export DOCKER_BUILDKIT=1
+docker-compose up --build -d
+```
+
+2. **Parallel builds**:
+```bash
+docker-compose up --build -d --parallel
+```
+
+3. **Clean build cache** (if builds are failing):
+```bash
+docker system prune -a
 docker-compose up --build -d
 ```
 

@@ -4,15 +4,17 @@ FROM node:18-alpine AS builder
 # Set working directory
 WORKDIR /app
 
-# Install dependencies first (for better caching)
-COPY package*.json ./
-RUN npm ci && npm install -g cross-env
-
-# Set build environment
-ENV NODE_OPTIONS="--max-old-space-size=4096"
+# Set build environment variables early
+ENV NODE_OPTIONS="--max-old-space-size=2048"
 ENV GENERATE_SOURCEMAP=false
 ENV BABEL_ENV=production
 ENV NODE_ENV=production
+ENV CI=true
+ENV DISABLE_ESLINT_PLUGIN=true
+
+# Install dependencies first (for better caching)
+COPY package*.json ./
+RUN npm ci --only=production --silent
 
 # Copy source and build
 COPY . .
