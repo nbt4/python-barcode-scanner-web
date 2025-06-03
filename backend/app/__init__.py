@@ -24,19 +24,37 @@ def create_app():
     from os.path import dirname, join, abspath
     sys.path.insert(0, abspath(dirname(dirname(__file__))))
     from config import Config
+    
+    # Configure the app
+    app.config.from_object(Config)
+    
+    # Configure logging
+    import logging
+    logging.basicConfig(
+        level=logging.INFO if not app.debug else logging.DEBUG,
+        format='%(asctime)s [%(levelname)s] %(message)s'
+    )
+    
+    # Initialize extensions
     from .utils.encoders import CustomJSONEncoder
     
     # Set custom JSON encoder
     app.json_encoder = CustomJSONEncoder
     
-    app.config.from_object(Config)
+    # Load and register blueprints
+    from .routes.auth import auth_bp
+    from .routes.jobs import jobs_bp
+    from .routes.devices import devices_bp
+    from .routes.reports import reports_bp
+    from .routes.health import health_bp
     
-    # Register blueprints with URL prefix
-    from .routes import auth, jobs, devices, health, reports
-    app.register_blueprint(auth.auth_bp, url_prefix='/api/v1/auth')
-    app.register_blueprint(jobs.jobs_bp, url_prefix='/api/v1/jobs')
-    app.register_blueprint(devices.devices_bp, url_prefix='/api/v1/devices')
-    app.register_blueprint(health.health_bp, url_prefix='/api/v1/health')
-    app.register_blueprint(reports.reports_bp, url_prefix='/api/v1/reports')
+    # Register blueprints without prefix for health check
+    app.register_blueprint(health_bp)
+    
+    # Register all other blueprints with API prefix
+    app.register_blueprint(auth_bp, url_prefix='/api/v1/auth')
+    app.register_blueprint(jobs_bp, url_prefix='/api/v1/jobs')
+    app.register_blueprint(devices_bp, url_prefix='/api/v1/devices')
+    app.register_blueprint(reports_bp, url_prefix='/api/v1/reports')
     
     return app
