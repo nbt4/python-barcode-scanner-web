@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import {
   Container,
@@ -21,7 +21,26 @@ function Login() {
   const [loading, setLoading] = useState(false);
 
   // Get the page user was trying to access
-  const from = location.state?.from?.pathname || '/';
+  const from = location.state?.from?.pathname || '/dashboard';
+
+  // Check if user is already logged in
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      // If token exists, try to verify it
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      axios.get('/api/v1/auth/verify')
+        .then(() => {
+          // Token is valid, redirect to dashboard
+          navigate(from, { replace: true });
+        })
+        .catch(() => {
+          // Token is invalid, remove it
+          localStorage.removeItem('token');
+          delete axios.defaults.headers.common['Authorization'];
+        });
+    }
+  }, [navigate, from]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,10 +48,13 @@ function Login() {
     setLoading(true);
 
     try {
+      console.log('Attempting login...');
       const response = await axios.post('/api/v1/auth/login', {
         username,
         password
       });
+
+      console.log('Login response:', response.data);
 
       // Store token
       localStorage.setItem('token', response.data.token);
@@ -40,12 +62,16 @@ function Login() {
       // Configure axios defaults for future requests
       axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
 
+      console.log('Login successful, redirecting to:', from);
+      
       // Redirect to original destination or dashboard
       navigate(from, { replace: true });
     } catch (error) {
-      console.error('Login error:', error);
+      console.error('Login error:', error.response?.data || error.message);
       if (error.response?.status === 401) {
         setError('Invalid username or password');
+      } else if (error.response?.data?.error) {
+        setError(error.response.data.error);
       } else {
         setError('An error occurred during login. Please try again.');
       }
@@ -76,6 +102,10 @@ function Login() {
         >
           <Typography component="h1" variant="h5" sx={{ mb: 3 }}>
             Barcode Scanner Login
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+            Demo credentials: admin/password123 or user/user123
           </Typography>
 
           {error && (
