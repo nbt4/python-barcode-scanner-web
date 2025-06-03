@@ -5,10 +5,10 @@ load_dotenv()
 
 class Config:
     # Database settings (using external MySQL database)
-    MYSQL_HOST = 'tsunami-events.de'
-    MYSQL_DATABASE = 'TS-Lager'
-    MYSQL_USER = 'root'
-    MYSQL_PASSWORD = os.getenv('MYSQL_PASSWORD', '')  # Get password from environment variable
+    MYSQL_HOST = os.getenv('MYSQL_HOST', 'tsunami-events.de')
+    MYSQL_DATABASE = os.getenv('MYSQL_DATABASE', 'TS-Lager')
+    MYSQL_USER = os.getenv('MYSQL_USER', 'root')
+    MYSQL_PASSWORD = os.getenv('MYSQL_PASSWORD')  # Required environment variable
     MYSQL_POOL_SIZE = int(os.getenv('MYSQL_POOL_SIZE', '5'))
 
     # JWT Settings

@@ -14,6 +14,8 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
+  Container,
+  Avatar,
 } from '@mui/material';
 import {
   Menu as MenuIcon,
@@ -52,129 +54,132 @@ function Layout() {
   };
 
   const handleLogout = () => {
-    // Clear token from localStorage
     localStorage.removeItem('token');
-    // Redirect to login
     navigate('/login');
   };
 
   const drawer = (
-    <div>
-      <Toolbar />
+    <Box sx={{ height: '100%', bgcolor: 'background.paper' }}>
+      <Box
+        sx={{
+          p: 2,
+          display: 'flex',
+          alignItems: 'center',
+          borderBottom: 1,
+          borderColor: 'divider',
+          bgcolor: 'primary.main',
+          color: 'primary.contrastText',
+        }}
+      >
+        <Avatar
+          src="/tsunami-logo.png"
+          alt="Tsunami Events"
+          sx={{ width: 40, height: 40, mr: 2 }}
+        />
+        <Typography variant="h6" noWrap>
+          Job Scanner
+        </Typography>
+      </Box>
       <List>
         {menuItems.map((item) => (
           <ListItem
             button
             key={item.text}
             onClick={() => handleNavigation(item.path)}
-            selected={location.pathname === item.path}
             sx={{
-              '&.Mui-selected': {
-                backgroundColor: theme.palette.primary.main,
-                color: theme.palette.primary.contrastText,
-                '&:hover': {
-                  backgroundColor: theme.palette.primary.dark,
-                },
-                '& .MuiListItemIcon-root': {
-                  color: theme.palette.primary.contrastText,
-                },
+              bgcolor: location.pathname === item.path ? 'action.selected' : 'transparent',
+              '&:hover': {
+                bgcolor: 'action.hover',
               },
             }}
           >
-            <ListItemIcon
-              sx={{
-                color: location.pathname === item.path
-                  ? theme.palette.primary.contrastText
-                  : 'inherit',
-              }}
-            >
+            <ListItemIcon sx={{ color: location.pathname === item.path ? 'primary.main' : 'inherit' }}>
               {item.icon}
             </ListItemIcon>
-            <ListItemText primary={item.text} />
+            <ListItemText 
+              primary={item.text} 
+              sx={{ 
+                color: location.pathname === item.path ? 'primary.main' : 'text.primary',
+                '& .MuiTypography-root': {
+                  fontWeight: location.pathname === item.path ? 600 : 400,
+                }
+              }}
+            />
           </ListItem>
         ))}
-        <ListItem button onClick={handleLogout}>
+        <ListItem button onClick={handleLogout} sx={{ mt: 2 }}>
           <ListItemIcon>
             <LogoutIcon />
           </ListItemIcon>
           <ListItemText primary="Logout" />
         </ListItem>
       </List>
-    </div>
+    </Box>
   );
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex', minHeight: '100vh', bgcolor: 'background.default' }}>
       <CssBaseline />
       <AppBar
         position="fixed"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
+          bgcolor: 'primary.main',
+          boxShadow: 1,
         }}
       >
         <Toolbar>
           <IconButton
             color="inherit"
-            aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: 'none' } }}
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Barcode Scanner
+          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
+            {menuItems.find(item => item.path === location.pathname)?.text || 'Job Scanner'}
           </Typography>
         </Toolbar>
       </AppBar>
+      
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
       >
-        {/* Mobile drawer */}
         <Drawer
-          variant="temporary"
-          open={mobileOpen}
+          variant={isMobile ? 'temporary' : 'permanent'}
+          open={isMobile ? mobileOpen : true}
           onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
+          ModalProps={{ keepMounted: true }}
           sx={{
-            display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': {
-              boxSizing: 'border-box',
+            '& .MuiDrawer-paper': { 
               width: drawerWidth,
+              boxSizing: 'border-box',
+              bgcolor: 'background.paper',
+              boxShadow: 2
             },
           }}
-        >
-          {drawer}
-        </Drawer>
-        {/* Desktop drawer */}
-        <Drawer
-          variant="permanent"
-          sx={{
-            display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': {
-              boxSizing: 'border-box',
-              width: drawerWidth,
-            },
-          }}
-          open
         >
           {drawer}
         </Drawer>
       </Box>
+
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          p: 3,
+          p: { xs: 2, sm: 3 },
           width: { sm: `calc(100% - ${drawerWidth}px)` },
+          mt: { xs: 7, sm: 8 },
+          maxWidth: '100%',
+          overflow: 'hidden'
         }}
       >
-        <Toolbar /> {/* This toolbar is for spacing below the AppBar */}
-        <Outlet /> {/* This is where the child routes will be rendered */}
+        <Container maxWidth="xl" sx={{ height: '100%' }}>
+          <Outlet />
+        </Container>
       </Box>
     </Box>
   );

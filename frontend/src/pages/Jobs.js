@@ -17,13 +17,20 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  useTheme,
+  useMediaQuery,
+  Card,
+  CardContent,
+  IconButton,
 } from '@mui/material';
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, deDE } from '@mui/x-data-grid';
 import { DatePicker } from '@mui/x-date-pickers';
 import {
   Add as AddIcon,
   Search as SearchIcon,
   Clear as ClearIcon,
+  Edit as EditIcon,
+  Delete as DeleteIcon,
 } from '@mui/icons-material';
 import axios from 'axios';
 
@@ -51,48 +58,86 @@ function Jobs() {
     description: '',
   });
 
+  // Add these columns for the DataGrid
   const columns = [
-    { field: 'jobID', headerName: 'Job ID', width: 100 },
-    { field: 'kunde', headerName: 'Customer', width: 200 },
-    {
-      field: 'startDate',
-      headerName: 'Start Date',
-      width: 120,
-      valueFormatter: (params) => 
-        params.value ? new Date(params.value).toLocaleDateString('de-DE') : 'N/A',
+    { 
+      field: 'jobID', 
+      headerName: 'Job ID', 
+      width: 100,
+      flex: 0.5,
     },
     {
-      field: 'endDate',
-      headerName: 'End Date',
-      width: 120,
-      valueFormatter: (params) => 
-        params.value ? new Date(params.value).toLocaleDateString('de-DE') : 'N/A',
+      field: 'customerName',
+      headerName: 'Customer',
+      width: 200,
+      flex: 1,
+      renderCell: (params) => (
+        <Typography noWrap>
+          {`${params.row.companyname || ''} ${params.row.firstname || ''} ${params.row.lastname || ''}`}
+        </Typography>
+      ),
     },
-    { field: 'status', headerName: 'Status', width: 120 },
-    { field: 'device_count', headerName: 'Devices', width: 100 },
     {
-      field: 'final_revenue',
-      headerName: 'Revenue',
-      width: 120,
-      valueFormatter: (params) => 
-        params.value ? `€${params.value.toFixed(2)}` : '€0.00',
+      field: 'description',
+      headerName: 'Description',
+      width: 300,
+      flex: 1.5,
+      renderCell: (params) => (
+        <Typography noWrap>{params.row.description}</Typography>
+      ),
+    },
+    {
+      field: 'status',
+      headerName: 'Status',
+      width: 130,
+      flex: 0.7,
+      renderCell: (params) => (
+        <Box
+          sx={{
+            backgroundColor: getStatusColor(params.row.status),
+            color: '#fff',
+            py: 0.5,
+            px: 1.5,
+            borderRadius: 1,
+            fontSize: '0.875rem',
+          }}
+        >
+          {params.row.status}
+        </Box>
+      ),
     },
     {
       field: 'actions',
       headerName: 'Actions',
       width: 120,
+      flex: 0.7,
       sortable: false,
       renderCell: (params) => (
-        <Button
-          variant="contained"
-          size="small"
-          onClick={() => navigate(`/jobs/${params.row.jobID}`)}
-        >
-          View
-        </Button>
+        <Box>
+          <IconButton
+            size="small"
+            onClick={() => navigate(`/jobs/${params.row.jobID}`)}
+            sx={{ color: 'primary.main' }}
+          >
+            <EditIcon />
+          </IconButton>
+        </Box>
       ),
     },
   ];
+
+  const getStatusColor = (status) => {
+    switch (status?.toLowerCase()) {
+      case 'active':
+        return '#2e7d32'; // Green
+      case 'completed':
+        return '#1976d2'; // Blue
+      case 'cancelled':
+        return '#d32f2f'; // Red
+      default:
+        return '#757575'; // Grey
+    }
+  };
 
   const fetchJobs = async () => {
     try {
@@ -154,36 +199,41 @@ function Jobs() {
   };
 
   return (
-    <Box>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
-        <Typography variant="h4">Jobs</Typography>
+    <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column', gap: 2 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 2 }}>
+        <Typography variant="h4" component="h1" sx={{ color: 'primary.main', fontWeight: 500 }}>
+          Jobs
+        </Typography>
         <Button
           variant="contained"
           startIcon={<AddIcon />}
           onClick={() => setOpenDialog(true)}
+          sx={{
+            bgcolor: 'primary.main',
+            '&:hover': {
+              bgcolor: 'primary.dark',
+            },
+          }}
         >
           New Job
         </Button>
       </Box>
 
-      {error && (
-        <Alert severity="error" sx={{ mb: 3 }}>
-          {error}
-        </Alert>
-      )}
-
-      {/* Filters */}
-      <Paper sx={{ p: 2, mb: 3 }}>
+      <Paper sx={{ p: { xs: 2, sm: 3 }, mb: 2 }}>
         <Grid container spacing={2} alignItems="center">
-          <Grid item xs={12} sm={3}>
+          <Grid item xs={12} sm={6} md={4}>
             <TextField
               fullWidth
               label="Search"
+              variant="outlined"
               value={filters.search}
               onChange={(e) => setFilters({ ...filters, search: e.target.value })}
+              InputProps={{
+                startAdornment: <SearchIcon sx={{ color: 'action.active', mr: 1 }} />,
+              }}
             />
           </Grid>
-          <Grid item xs={12} sm={2}>
+          <Grid item xs={12} sm={6} md={2}>
             <FormControl fullWidth>
               <InputLabel>Status</InputLabel>
               <Select
@@ -198,54 +248,56 @@ function Jobs() {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={12} sm={2}>
+          <Grid item xs={12} sm={6} md={3}>
             <DatePicker
               label="From Date"
               value={filters.dateFrom}
               onChange={(date) => setFilters({ ...filters, dateFrom: date })}
-              slotProps={{ textField: { fullWidth: true } }}
+              renderInput={(params) => <TextField {...params} fullWidth />}
             />
           </Grid>
-          <Grid item xs={12} sm={2}>
+          <Grid item xs={12} sm={6} md={3}>
             <DatePicker
               label="To Date"
               value={filters.dateTo}
               onChange={(date) => setFilters({ ...filters, dateTo: date })}
-              slotProps={{ textField: { fullWidth: true } }}
+              renderInput={(params) => <TextField {...params} fullWidth />}
             />
-          </Grid>
-          <Grid item xs={12} sm={3}>
-            <Box sx={{ display: 'flex', gap: 1 }}>
-              <Button
-                variant="contained"
-                startIcon={<SearchIcon />}
-                onClick={fetchJobs}
-              >
-                Search
-              </Button>
-              <Button
-                variant="outlined"
-                startIcon={<ClearIcon />}
-                onClick={handleClearFilters}
-              >
-                Clear
-              </Button>
-            </Box>
           </Grid>
         </Grid>
       </Paper>
 
-      {/* Jobs Table */}
-      <Paper sx={{ height: 600, width: '100%' }}>
-        <DataGrid
-          rows={jobs}
-          columns={columns}
-          pageSize={10}
-          rowsPerPageOptions={[10]}
-          getRowId={(row) => row.jobID}
-          loading={loading}
-          disableSelectionOnClick
-        />
+      {error && (
+        <Alert severity="error" sx={{ mb: 2 }}>
+          {error}
+        </Alert>
+      )}
+
+      <Paper sx={{ flexGrow: 1, height: { xs: 400, md: 600 } }}>
+        {loading ? (
+          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+            <CircularProgress />
+          </Box>
+        ) : (
+          <DataGrid
+            rows={jobs}
+            columns={columns}
+            pageSize={10}
+            rowsPerPageOptions={[10, 25, 50]}
+            getRowId={(row) => row.jobID}
+            disableSelectionOnClick
+            localeText={deDE.components.MuiDataGrid.defaultProps.localeText}
+            sx={{
+              '& .MuiDataGrid-cell': {
+                cursor: 'pointer',
+              },
+              '& .MuiDataGrid-row:hover': {
+                bgcolor: 'action.hover',
+              },
+            }}
+            onRowClick={(params) => navigate(`/jobs/${params.row.jobID}`)}
+          />
+        )}
       </Paper>
 
       {/* Create Job Dialog */}
@@ -280,7 +332,7 @@ function Jobs() {
                 label="Start Date"
                 value={newJob.startDate}
                 onChange={(date) => setNewJob({ ...newJob, startDate: date })}
-                slotProps={{ textField: { fullWidth: true } }}
+                renderInput={(params) => <TextField {...params} fullWidth />}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -288,7 +340,7 @@ function Jobs() {
                 label="End Date"
                 value={newJob.endDate}
                 onChange={(date) => setNewJob({ ...newJob, endDate: date })}
-                slotProps={{ textField: { fullWidth: true } }}
+                renderInput={(params) => <TextField {...params} fullWidth />}
               />
             </Grid>
             <Grid item xs={12}>

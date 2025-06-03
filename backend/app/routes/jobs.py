@@ -29,7 +29,7 @@ def get_db_connection():
         print(f"Error connecting to database: {err}")
         return None
 
-@jobs_bp.route('/', methods=['GET'])
+@jobs_bp.route('', methods=['GET'])
 @token_required
 def get_jobs():
     """Get all jobs"""
