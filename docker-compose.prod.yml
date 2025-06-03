@@ -1,20 +1,19 @@
 services:
   backend:
     build: ./backend
-    container_name: barcodescanner-backend
+    container_name: barcodescanner-backend-prod
     environment:
       - MYSQL_HOST=tsunami-events.de
       - MYSQL_USER=root
       - MYSQL_PASSWORD=goQhQTACjH2cwx657fdNDes6SicLWI
       - MYSQL_DATABASE=TS-Lager
-      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY:-change-this-in-production}
       - CORS_ORIGINS=https://job.tsunamievents.de
       - FLASK_ENV=production
       - FLASK_DEBUG=false
+      - PYTHONUNBUFFERED=1
     expose:
       - "5000"
-    volumes:
-      - ./backend:/app
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
@@ -26,16 +25,22 @@ services:
       - app-network
       - mysql
       - proxy
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
       shm_size: '2gb'
-    container_name: barcodescanner-frontend
+    container_name: barcodescanner-frontend-prod
     environment:
       - REACT_APP_API_URL=/api/v1
       - NODE_ENV=production
+      - GENERATE_SOURCEMAP=false
     expose:
       - "80"
     depends_on:
@@ -45,6 +50,11 @@ services:
       - app-network
       - mysql
       - proxy
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 networks:
   app-network:
