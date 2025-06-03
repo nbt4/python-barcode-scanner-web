@@ -8,6 +8,9 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+      - CORS_ORIGINS=*
+      - FLASK_ENV=production
+      - FLASK_DEBUG=False
     expose:
       - "5000"
     volumes:

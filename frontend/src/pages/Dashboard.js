@@ -18,7 +18,7 @@ import {
   Assessment as AssessmentIcon,
   ArrowForward as ArrowForwardIcon,
 } from '@mui/icons-material';
-import axios from 'axios';
+import axios from '../config/axios';
 
 function Dashboard() {
   const navigate = useNavigate();

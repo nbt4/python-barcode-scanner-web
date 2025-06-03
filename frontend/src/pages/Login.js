@@ -10,7 +10,7 @@ import {
   Paper,
   CircularProgress
 } from '@mui/material';
-import axios from 'axios';
+import axios from '../config/axios';
 
 function Login() {
   const navigate = useNavigate();

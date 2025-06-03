@@ -27,7 +27,7 @@ import {
 } from '@mui/icons-material';
 import Webcam from 'react-webcam';
 import jsQR from 'jsqr';
-import axios from 'axios';
+import axios from '../config/axios';
 
 function Scanner() {
   const webcamRef = useRef(null);

@@ -27,7 +27,7 @@ import {
   Add as AddIcon,
 } from '@mui/icons-material';
 import { DataGrid } from '@mui/x-data-grid';
-import axios from 'axios';
+import axios from '../config/axios';
 
 function JobDetail() {
   const { jobId } = useParams();
